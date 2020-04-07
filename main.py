@@ -23,5 +23,7 @@ cv2.imwrite("gray.jpg", resized)
 # cv2.destroyAllWindows()
 
 """
+#time it cost to run 1 image = 1.96884473085
+#f187ff244ecfc9e264b67ae04aca4498fe608f6b van gray image 
 elapsed_time = timeit.timeit(codeToTest, number=100)/100
 print(elapsed_time)
