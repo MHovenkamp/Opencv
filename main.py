@@ -2,6 +2,8 @@ import cv2 #to read the image
 import timeit
 
 codeToTest = """
+import cv2
+
 image = cv2.imread('/home/pi/Opencv/images/bigJared.jpg')
 gray = cv2.cvtColor( image, cv2.COLOR_BGR2GRAY)
 
