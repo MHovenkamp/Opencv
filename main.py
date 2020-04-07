@@ -7,12 +7,15 @@ import cv2
 image = cv2.imread('/home/pi/Opencv/images/bigJared.jpg')
 gray = cv2.cvtColor( image, cv2.COLOR_BGR2GRAY)
 
+
 #laten zien van de images, staat uit voor terminal gebruik
 #cv2.imshow('Original image', image)
 #cv2.imshow('Gray boi', gray)
 
 dim = (48, 48)
+#resized = cv2.resize(gray, dim, interpolation = cv2.INTER_AREA)
 resized = cv2.resize(gray, dim, interpolation = cv2.INTER_LINEAR)
+#resized = cv2.resize(gray, dim, interpolation = cv2.INTER_CUBIC)
 
 #opslaan van de afbeeldingen voor evaluatie
 cv2.imwrite("original.jpg",image)
@@ -25,11 +28,14 @@ cv2.imwrite("gray.jpg", resized)
 """
 #time it cost to run 1 image = 1.96884473085 
 
-#| method of resizing | method of grayscaling | speed |
-#| INTER_AREA | COLOR_BGR2GRAY | 1.96884473085 |
-#| INTER_LINEAR | COLOR_BGR2GRAY | 
+# Dit zijn de testen op 1 afbeelding aangezien ik nog geen database heb
+# Volgorde grayscalling -> Resizing
+#| method of resizing | method of grayscaling | speed | shasum |
+#| INTER_AREA | COLOR_BGR2GRAY | 1.96884473085 | #f187ff244ecfc9e264b67ae04aca4498fe608f6b |
+#| INTER_LINEAR | COLOR_BGR2GRAY | 1.68420283794 | 3cbf05488ee00e09193cf213c9db1c8ff3f9dd05 |
+#| INTER_CUBIC | COLOR_BGR2GRAY | 
 
 
-#f187ff244ecfc9e264b67ae04aca4498fe608f6b van gray image 
+
 elapsed_time = timeit.timeit(codeToTest, number=100)/100
 print(elapsed_time)
