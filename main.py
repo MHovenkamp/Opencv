@@ -3,8 +3,8 @@ import time
 
 import cv2
 
-path = '/home/pi/Opencv/images/'
-name = input()
+path = "/home/pi/Opencv/images/"
+name = raw_input()
 image = cv2.imread(path + name)
 tStart = time.time()
 gray = cv2.cvtColor( image, cv2.COLOR_BGR2GRAY)
@@ -43,5 +43,8 @@ tEnd = time.time()
 #| INTER_NEAREST | COLOR_BGR2GRAY | +-
 
 
-elapsed_time =  tEnd-tStart
-print(elapsed_time)
+elapsedTime =  tEnd-tStart
+print(elapsedTime)
+
+results = open('results.txt', "a")
+results.write( name + ' ' + str(elapsedTime) + '\n' )
