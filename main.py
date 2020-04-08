@@ -1,10 +1,12 @@
 import cv2 #to read the image
 import timeit
 
-codeToTest = """
 import cv2
 
-image = cv2.imread('/home/pi/Opencv/images/bigJared.jpg')
+path = '/home/pi/Opencv/images/
+name = input()
+codeToTest = """
+image = cv2.imread(path + name)
 gray = cv2.cvtColor( image, cv2.COLOR_BGR2GRAY)
 
 
@@ -13,11 +15,11 @@ gray = cv2.cvtColor( image, cv2.COLOR_BGR2GRAY)
 #cv2.imshow('Gray boi', gray)
 
 dim = (48, 48)
-#resized = cv2.resize(gray, dim, interpolation = cv2.INTER_AREA)
+resized = cv2.resize(gray, dim, interpolation = cv2.INTER_AREA)
 #resized = cv2.resize(gray, dim, interpolation = cv2.INTER_LINEAR)
 #resized = cv2.resize(gray, dim, interpolation = cv2.INTER_CUBIC)
 #resized = cv2.resize(gray, dim, interpolation = cv2.INTER_LANCZOS4)
-resized = cv2.resize(gray, dim, interpolation = cv2.INTER_NEAREST)
+#resized = cv2.resize(gray, dim, interpolation = cv2.INTER_NEAREST)
 
 #opslaan van de afbeeldingen voor evaluatie
 cv2.imwrite("original.jpg",image)
@@ -41,5 +43,5 @@ cv2.imwrite("gray.jpg", resized)
 
 
 
-elapsed_time = timeit.timeit(codeToTest, number=100)/100
+elapsed_time = timeit.timeit(codeToTest, number=10)/10
 print(elapsed_time)
