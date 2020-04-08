@@ -22,6 +22,7 @@ resultFiles = ['/home/pi/Opencv/Results/resultsArea.txt',
                 '/home/pi/Opencv/Results/resultsLinear.txt',
                 '/home/pi/Opencv/Results/resultsNearest.txt']
 for i in range(len(methods)):
+    total = file.open('/home/pi/Opencv/Results/total.txt', "a")
     results = open(resultFiles[i], "a")
     path = "/home/pi/Opencv/Images/"
     pathResults = paths[i]
@@ -60,3 +61,4 @@ for i in range(len(methods)):
 
     average = sum(resultsList) / len(resultsList)
     results.write("Average: " + str(average))
+    total.write( str(methods[i]) + " " + str(average) ) 
