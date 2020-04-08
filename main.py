@@ -5,22 +5,28 @@ import os
 import cv2
 
 resultsList = []
-names = ['Area', 'Cubic', 'Lanczos4', 'Linear', 'Nearest']
+names = ['Area', 'Cubic', 'Lanczos4', 'Linear', 'Nearest', 'Linear_exact', 'Max']
 paths = [   "/home/pi/Opencv/Results/Area/", 
             "/home/pi/Opencv/Results/Cubic/", 
             "/home/pi/Opencv/Results/Lanczos4/", 
             "/home/pi/Opencv/Results/Linear/", 
-            "/home/pi/Opencv/Results/nearest/"]
+            "/home/pi/Opencv/Results/Nearest/",
+            "/home/pi/Opencv/Results/Linear_exact/",
+            "/home/pi/Opencv/Results/Max/"]
 methods = [ cv2.INTER_AREA,
             cv2.INTER_CUBIC,
             cv2.INTER_LANCZOS4,
             cv2.INTER_LINEAR,
-            cv2.INTER_NEAREST]
+            cv2.INTER_NEAREST,
+            INTER_LINEAR_EXACT,
+            INTER_MAX]
 resultFiles = ['/home/pi/Opencv/Results/resultsArea.txt',
                 '/home/pi/Opencv/Results/resultsCubic.txt',
                 '/home/pi/Opencv/Results/resultsLanczos4.txt',
                 '/home/pi/Opencv/Results/resultsLinear.txt',
-                '/home/pi/Opencv/Results/resultsNearest.txt']
+                '/home/pi/Opencv/Results/resultsNearest.txt',
+                '/home/pi/Opencv/Results/Linear_exact.txt',
+                '/home/pi/Opencv/Results/max.txt']
 for i in range(len(methods)):
     total = open('/home/pi/Opencv/Results/total.txt', "a")
     results = open(resultFiles[i], "a")
