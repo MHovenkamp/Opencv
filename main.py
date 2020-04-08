@@ -4,7 +4,11 @@ import os
 
 import cv2
 
-path = "/home/pi/Opencv/images/"
+resultsList = []
+
+results = open('/Results/results.txt', "a")
+path = "/home/pi/Opencv/Images/"
+pathResults = "/home/pi/Opencv/Results/"
 for file in os.listdir(path):
     image = cv2.imread(path + file)
     tStart = time.time()
@@ -23,8 +27,8 @@ for file in os.listdir(path):
     #resized = cv2.resize(gray, dim, interpolation = cv2.INTER_NEAREST)
 
     #opslaan van de afbeeldingen voor evaluatie
-    cv2.imwrite("original.jpg",image)
-    cv2.imwrite("gray.jpg", resized) 
+    cv2.imwrite(pathResults + file + "gray",image)
+    cv2.imwrite(pathResults+ file + "gray_resized", resized) 
 
     # Voor laten zien afbeeldingen, uit vo rterminal gebruik
     # cv2.waitKey(0)
@@ -45,7 +49,10 @@ for file in os.listdir(path):
 
 
     elapsedTime =  tEnd-tStart
+    resultsList.append(elapsedTime)
     print(elapsedTime)
 
-    results = open('results.txt', "a")
-    results.write( file + ' ' + str(elapsedTime) + '\n' )
+    results.write( file + ': ' + str(elapsedTime) + '\n' )
+
+average = sum(resultsList) / len(resultsList)
+results.write("Average: " + str(average))
