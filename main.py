@@ -1,12 +1,12 @@
 import cv2 #to read the image
-import timeit
+import time
 
 import cv2
 
-path = '/home/pi/Opencv/images/
+path = '/home/pi/Opencv/images/'
 name = input()
-codeToTest = """
 image = cv2.imread(path + name)
+tStart = time.time()
 gray = cv2.cvtColor( image, cv2.COLOR_BGR2GRAY)
 
 
@@ -29,7 +29,8 @@ cv2.imwrite("gray.jpg", resized)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
 
-"""
+tEnd = time.time()
+
 #time it cost to run 1 image = 1.96884473085 
 
 # Dit zijn de testen op 1 afbeelding aangezien ik nog geen database heb
@@ -42,6 +43,5 @@ cv2.imwrite("gray.jpg", resized)
 #| INTER_NEAREST | COLOR_BGR2GRAY | +-
 
 
-
-elapsed_time = timeit.timeit(codeToTest, number=10)/10
+elapsed_time =  tEnd-tStart
 print(elapsed_time)
