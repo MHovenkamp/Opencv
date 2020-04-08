@@ -30,6 +30,8 @@ for i in range(len(methods)):
     for file in os.listdir(path):
         image = cv2.imread(path + file)
         tStart = time.time()
+        
+        #grayscalling
         gray = cv2.cvtColor( image, cv2.COLOR_BGR2GRAY)
 
 
@@ -37,15 +39,15 @@ for i in range(len(methods)):
         #cv2.imshow('Original image', image)
         #cv2.imshow('Gray boi', gray)
 
+        #resizen
         dim = (48, 48)
         resized = cv2.resize(gray, dim, interpolation = methods[i])
 
-        #opslaan van de afbeeldingen voor evaluatie
-        grayName = pathResults + file + "Gray.jpg"
-        resizedName = pathResults + file + "Gray_resized.jpg"
-
-        cv2.imwrite(grayName,image)
-        cv2.imwrite(resizedName, resized) 
+        #opslaan van de afbeeldingen
+        # grayName = pathResults + file + "Gray.jpg"
+        # resizedName = pathResults + file + "Gray_resized.jpg"
+        # cv2.imwrite(grayName,image)
+        # cv2.imwrite(resizedName, resized) 
 
         # Voor laten zien afbeeldingen, uit vo rterminal gebruik
         # cv2.waitKey(0)
@@ -56,9 +58,9 @@ for i in range(len(methods)):
         elapsedTime =  tEnd-tStart
         resultsList.append(elapsedTime)
         print(elapsedTime)
-
         results.write( file + ': ' + str(elapsedTime) + '\n' )
 
+    #berekenen en schrijven van average
     average = sum(resultsList) / len(resultsList)
     results.write("Average: " + str(average))
     total.write( names[i] + " " + str(average) + '\n' ) 
