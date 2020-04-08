@@ -6,7 +6,7 @@ import cv2
 
 resultsList = []
 
-results = open('/Results/results.txt', "a")
+results = open('/home/pi/Opencv/Results/results.txt', "a")
 path = "/home/pi/Opencv/Images/"
 pathResults = "/home/pi/Opencv/Results/"
 for file in os.listdir(path):
@@ -27,8 +27,12 @@ for file in os.listdir(path):
     #resized = cv2.resize(gray, dim, interpolation = cv2.INTER_NEAREST)
 
     #opslaan van de afbeeldingen voor evaluatie
-    cv2.imwrite(pathResults + file + "gray",image)
-    cv2.imwrite(pathResults+ file + "gray_resized", resized) 
+
+    grayName= pathResults = file + "Gray.jpg"
+    resizedName = pathResults + file + "Gray_resized.jpg"
+
+    cv2.imwrite(grayName,image)
+    cv2.imwrite(resizedName, resized) 
 
     # Voor laten zien afbeeldingen, uit vo rterminal gebruik
     # cv2.waitKey(0)
