@@ -28,7 +28,7 @@ for file in os.listdir(path):
 
     #opslaan van de afbeeldingen voor evaluatie
 
-    grayName= pathResults = file + "Gray.jpg"
+    grayName = pathResults + file + "Gray.jpg"
     resizedName = pathResults + file + "Gray_resized.jpg"
 
     cv2.imwrite(grayName,image)
