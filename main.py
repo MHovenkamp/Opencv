@@ -62,5 +62,6 @@ for i in range(len(methods)):
 
     #berekenen en schrijven van average
     average = sum(resultsList) / len(resultsList)
-    results.write("Average: " + str(average))
+    results.write("Average: " + str(average) + "\n" + "----------------------\n")
     total.write( names[i] + " " + str(average) + '\n' ) 
+total.write("----------------------\n")
