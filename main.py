@@ -44,10 +44,10 @@ for i in range(len(methods)):
         resized = cv2.resize(gray, dim, interpolation = methods[i])
 
         #opslaan van de afbeeldingen
-        # grayName = pathResults + file + "Gray.jpg"
-        # resizedName = pathResults + file + "Gray_resized.jpg"
-        # cv2.imwrite(grayName,image)
-        # cv2.imwrite(resizedName, resized) 
+        grayName = pathResults + file + "Gray.jpg"
+        resizedName = pathResults + file + "Gray_resized.jpg"
+        cv2.imwrite(grayName,image)
+        cv2.imwrite(resizedName, resized) 
 
         # Voor laten zien afbeeldingen, uit vo rterminal gebruik
         # cv2.waitKey(0)
