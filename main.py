@@ -10,7 +10,7 @@ paths = [   "/home/pi/Opencv/Results/Area/",
             "/home/pi/Opencv/Results/Cubic/", 
             "/home/pi/Opencv/Results/Lanczos4/", 
             "/home/pi/Opencv/Results/Linear/", 
-            "/home/pi/Opencv/Results/nearest/"]
+            "/home/pi/Opencv/Results/Nearest/"]
 methods = [ cv2.INTER_AREA,
             cv2.INTER_CUBIC,
             cv2.INTER_LANCZOS4,
