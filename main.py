@@ -46,7 +46,7 @@ for i in range(len(methods)):
         #opslaan van de afbeeldingen
         grayName = pathResults + file + "Gray.jpg"
         resizedName = pathResults + file + "Gray_resized.jpg"
-        cv2.imwrite(grayName,image)
+        cv2.imwrite(grayName,gray)
         cv2.imwrite(resizedName, resized) 
 
         # Voor laten zien afbeeldingen, uit vo rterminal gebruik
