@@ -5,12 +5,12 @@ import os
 import cv2
 
 resultsList = []
-names = ['Area', 'Cubic', 'Lanczos4', 'Linear', 'Nearest']
+names = ['Area', 'Cubic', 'Lanczos4', 'Linear', 'Nearest', 'Linear_exact', 'Max']
 paths = [   "/home/pi/Opencv/Results/Area/", 
             "/home/pi/Opencv/Results/Cubic/", 
             "/home/pi/Opencv/Results/Lanczos4/", 
             "/home/pi/Opencv/Results/Linear/", 
-            "/home/pi/Opencv/Results/nearest/"]
+            "/home/pi/Opencv/Results/Nearest/"]
 methods = [ cv2.INTER_AREA,
             cv2.INTER_CUBIC,
             cv2.INTER_LANCZOS4,
@@ -22,12 +22,14 @@ resultFiles = ['/home/pi/Opencv/Results/resultsArea.txt',
                 '/home/pi/Opencv/Results/resultsLinear.txt',
                 '/home/pi/Opencv/Results/resultsNearest.txt']
 for i in range(len(methods)):
+    count = 0
     total = open('/home/pi/Opencv/Results/total.txt', "a")
     results = open(resultFiles[i], "a")
     path = "/home/pi/Opencv/Images/"
     pathResults = paths[i]
 
     for file in os.listdir(path):
+        count += 1
         image = cv2.imread(path + file)
         tStart = time.time()
         
@@ -57,7 +59,7 @@ for i in range(len(methods)):
 
         elapsedTime =  tEnd-tStart
         resultsList.append(elapsedTime)
-        print(elapsedTime)
+        print(count + ": " +elapsedTime)
         results.write( file + ': ' + str(elapsedTime) + '\n' )
 
     #berekenen en schrijven van average
