@@ -22,12 +22,14 @@ resultFiles = ['/home/pi/Opencv/Results/resultsArea.txt',
                 '/home/pi/Opencv/Results/resultsLinear.txt',
                 '/home/pi/Opencv/Results/resultsNearest.txt']
 for i in range(len(methods)):
+    count = 0
     total = open('/home/pi/Opencv/Results/total.txt', "a")
     results = open(resultFiles[i], "a")
     path = "/home/pi/Opencv/Images/"
     pathResults = paths[i]
 
     for file in os.listdir(path):
+        count += 1
         image = cv2.imread(path + file)
         tStart = time.time()
         
@@ -57,7 +59,7 @@ for i in range(len(methods)):
 
         elapsedTime =  tEnd-tStart
         resultsList.append(elapsedTime)
-        print(elapsedTime)
+        print(count + ": " +elapsedTime)
         results.write( file + ': ' + str(elapsedTime) + '\n' )
 
     #berekenen en schrijven van average
