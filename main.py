@@ -24,7 +24,7 @@ resultFiles = ['/home/pi/Opencv/Results/resultsArea.txt',
 for i in range(len(methods)):
     total = open('/home/pi/Opencv/Results/total.txt', "a")
     results = open(resultFiles[i], "a")
-    path = "/home/pi/Opencv/Images/"
+    path = "/home/pi/Opencv/Images/200x200"
     pathResults = paths[i]
 
     for file in os.listdir(path):
@@ -40,12 +40,12 @@ for i in range(len(methods)):
         #cv2.imshow('Gray boi', gray)
 
         #resizen
-        dim = (48, 48)
+        dim = (64, 64)
         resized = cv2.resize(gray, dim, interpolation = methods[i])
 
         #opslaan van de afbeeldingen
-        grayName = pathResults + file + "Gray.jpg"
-        resizedName = pathResults + file + "Gray_resized.jpg"
+        grayName = pathResults + file + "Gray.png"
+        resizedName = pathResults + file + "Gray_resized.png"
         cv2.imwrite(grayName,gray)
         cv2.imwrite(resizedName, resized) 
 
