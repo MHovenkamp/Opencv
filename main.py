@@ -24,7 +24,7 @@ resultFiles = ['/home/pi/Opencv/Results/resultsArea.txt',
 for i in range(len(methods)):
     total = open('/home/pi/Opencv/Results/total.txt', "a")
     results = open(resultFiles[i], "a")
-    path = "/home/pi/Opencv/Images/200x200/"
+    path = "/home/pi/Opencv/Images/FACES/"
     pathResults = paths[i]
 
     for file in os.listdir(path):
