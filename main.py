@@ -24,7 +24,7 @@ resultFiles = ['/home/pi/Opencv/Results/resultsArea.txt',
 for i in range(len(methods)):
     total = open('/home/pi/Opencv/Results/total.txt', "a")
     results = open(resultFiles[i], "a")
-    path = "/home/pi/Opencv/Images/200x200"
+    path = "/home/pi/Opencv/Images/200x200/"
     pathResults = paths[i]
 
     for file in os.listdir(path):
@@ -32,6 +32,7 @@ for i in range(len(methods)):
         tStart = time.time()
         
         #grayscalling
+	print( path+file )
         gray = cv2.cvtColor( image, cv2.COLOR_BGR2GRAY)
 
 
