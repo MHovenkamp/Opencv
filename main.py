@@ -2,8 +2,6 @@ import cv2 #to read the image
 import time
 import os
 
-import cv2
-
 resultsList = []
 names = ['Area', 'Cubic', 'Lanczos4', 'Linear', 'Nearest']
 paths = [   "/home/pi/Opencv/Results/Area/", 
