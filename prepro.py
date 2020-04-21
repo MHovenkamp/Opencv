@@ -3,7 +3,6 @@ import time
 import os
 
 path = "/home/pi/Opencv/Images/FACES/"
-#face_cascade = cv2.CascadeClassifier("home/pi/opencv/haarcascade_frontalface_default.xml")
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 for file in os.listdir(path):
     image = cv2.imread( path + file )
@@ -17,5 +16,6 @@ for file in os.listdir(path):
         x, y, w, h = [v for v in f ]
         cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
         faceCrop = imageGray[y:y+h, x:x+w]
+    resized = cv2.resize(faceCrop, dim, interpolation = INTER_LINEAR)
     cv2.imwrite( file + "result.png", faceCrop )
 
