@@ -3,7 +3,8 @@ import time
 import os
 
 path = "/home/pi/Opencv/Images/FACES/"
-face_cascade.load("home/pi/opencv/data/haarcascades/haarcascade_frontalface_default.xml")
+#face_cascade = cv2.CascadeClassifier("home/pi/opencv/haarcascade_frontalface_default.xml")
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 for file in os.listdir(path):
     image = cv2.imread( path + file )
     imageRGB = cv2.cvtColor( image, cv2.COLOR_BGR2RGB)
