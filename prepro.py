@@ -3,7 +3,7 @@ import time
 import os
 
 path = "/home/pi/Opencv/Images/FACES/"
-resultPath = "/home/pi/Opencv/CropResult/"
+resultPath = "/home/pi/Opencv/CropResults/"
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 for file in os.listdir(path):
     image = cv2.imread( path + file )
