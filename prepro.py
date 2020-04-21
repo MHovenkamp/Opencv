@@ -15,4 +15,4 @@ for file in os.listdir(path):
     cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
     faceCrop = gray_image[y:y+h, x:x+w]
 
-cv2.imshow( "cropped", faceCrop)
+cv2.imwrite( "result.png", faceCrop )
