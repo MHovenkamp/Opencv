@@ -18,5 +18,5 @@ for file in os.listdir(path):
         cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
         faceCrop = imageGray[y:y+h, x:x+w]
     resized = cv2.resize(faceCrop, (64,64), interpolation = cv2.INTER_LINEAR)
-    cv2.imwrite( resultPath + file + "result.png", faceCrop )
+    cv2.imwrite( resultPath + file + "result.png", resized )
 
