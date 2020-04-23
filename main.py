@@ -2,6 +2,7 @@ import cv2 #to read the image
 import time
 import os
 
+faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 resultsList = []
 names = ['Area', 'Cubic', 'Lanczos4', 'Linear', 'Nearest']
 paths = [   "/home/pi/Opencv/Results/Area/", 
@@ -22,7 +23,7 @@ resultFiles = ['/home/pi/Opencv/Results/resultsArea.txt',
 for i in range(len(methods)):
     total = open('/home/pi/Opencv/Results/total.txt', "a")
     results = open(resultFiles[i], "a")
-    path = "/home/pi/Opencv/Images/200x200/"
+    path = "/home/pi/Opencv/Images/FACES/"
     pathResults = paths[i]
 
     for file in os.listdir(path):
@@ -31,26 +32,29 @@ for i in range(len(methods)):
         
         #grayscalling
 	print( path+file )
-        gray = cv2.cvtColor( image, cv2.COLOR_BGR2GRAY)
+        image = cv2.imread( path + file )
+        imageRGB = cv2.cvtColor( image, cv2.COLOR_BGR2RGB)
+        imageCopy = imageRGB.copy()
 
-
+        imageGray = cv2.cvtColor( imageRGB, cv2.COLOR_RGB2GRAY )
         #laten zien van de images, staat uit voor terminal gebruik
         #cv2.imshow('Original image', image)
         #cv2.imshow('Gray boi', gray)
-
+        face = faceCascade.detectMultiScale( imageGray, 1.25, 6)
+        for f in face:
+            x, y, w, h = [v for v in f ]
+            cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
+            #croppen van gezicht
+            faceCrop = imageGray[y:y+h, x:x+w]
         #resizen
         dim = (64, 64)
-        resized = cv2.resize(gray, dim, interpolation = methods[i])
+        resized = cv2.resize(faceCrop, dim, interpolation = methods[i])
 
         #opslaan van de afbeeldingen
 #        grayName = pathResults + file + "Gray.png"
 #        resizedName = pathResults + file + "Gray_resized.png"
 #        cv2.imwrite(grayName,gray)
 #        cv2.imwrite(resizedName, resized) 
-
-        # Voor laten zien afbeeldingen, uit vo rterminal gebruik
-        # cv2.waitKey(0)
-        # cv2.destroyAllWindows()
 
         tEnd = time.time()
 
