@@ -51,10 +51,8 @@ for i in range(len(methods)):
         resized = cv2.resize(faceCrop, dim, interpolation = methods[i])
 
         #opslaan van de afbeeldingen
-       grayName = pathResults + file + "Gray.png"
-       resizedName = pathResults + file + "Gray_resized.png"
-       cv2.imwrite(grayName,gray)
-       cv2.imwrite(resizedName, resized) 
+        resizedName = pathResults + file + "Gray_resized.png"
+        cv2.imwrite(resizedName, resized) 
 
         tEnd = time.time()
 
