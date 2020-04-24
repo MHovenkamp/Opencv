@@ -30,33 +30,32 @@ for i in range(len(methods)):
         image = cv2.imread(path + file)
         tStart = time.time()
         
-        #grayscalling
-	print( path+file )
+	    print( path+file )
         image = cv2.imread( path + file )
         imageRGB = cv2.cvtColor( image, cv2.COLOR_BGR2RGB)
         imageCopy = imageRGB.copy()
-
         imageGray = cv2.cvtColor( imageRGB, cv2.COLOR_RGB2GRAY )
-        #laten zien van de images, staat uit voor terminal gebruik
-        #cv2.imshow('Original image', image)
-        #cv2.imshow('Gray boi', gray)
+        
         face = faceCascade.detectMultiScale( imageGray, 1.25, 6)
-        for f in face:
-            x, y, w, h = [v for v in f ]
+        if (face is not None):
+            x, y, w, h = [v for v in face ]
             cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
             #croppen van gezicht
             faceCrop = imageGray[y:y+h, x:x+w]
-        #resizen
-        dim = (64, 64)
-        resized = cv2.resize(faceCrop, dim, interpolation = methods[i])
+            #resizen
+            dim = (64, 64)
+            resized = cv2.resize(faceCrop, dim, interpolation = methods[i])
+        else:
+            dim = (64, 64)
+            resized = cv2.resize(imageGray, dim, interpolation = methods[i])
 
         #opslaan van de afbeeldingen
         # resizedName = pathResults + file + "Gray_resized.png"
         # cv2.imwrite(resizedName, resized) 
 
         tEnd = time.time()
-
         elapsedTime =  tEnd-tStart
+        
         resultsList.append(elapsedTime)
         print(elapsedTime)
         results.write( file + ': ' + str(elapsedTime) + '\n' )
