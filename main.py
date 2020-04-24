@@ -39,8 +39,8 @@ for i in range(10):
             
             face = faceCascade.detectMultiScale( imageGray, 1.25, 6)
             if (face is not None):
-                x, y, w, h = [v for v in face ]
-                cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
+                for (x, y, w, h) in faces:
+                    cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
                 #croppen van gezicht
                 faceCrop = imageGray[y:y+h, x:x+w]
                 #resizen
