@@ -40,13 +40,11 @@ for i in range(10):
             face = faceCascade.detectMultiScale( imageGray, 1.25, 6)
             print(face)
             if not face:
-                print( "beep?")
                 dim = (64, 64)
                 resized = cv2.resize(imageGray, dim, interpolation = methods[i])
 
                 #opslaan van de afbeeldingen
                 resizedName = pathResults + file + "Gray_resized.png"
-                print(resizedName)
                 cv2.imwrite(resizedName, resized)  
             else:
                 for (x, y, w, h) in face:
@@ -59,7 +57,6 @@ for i in range(10):
 
                     #opslaan van de afbeeldingen
                     resizedName = pathResults + file + "Gray_resized.png"
-                    print(resizedName)
                     cv2.imwrite(resizedName, resized) 
 
             tEnd = time.time()
