@@ -46,7 +46,7 @@ for i in range(10):
                 x, y, w, h = [v for v in f ]
                 cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
                 #croppen van gezicht
-            faceCrop = imageGray[y:y+h, x:x+w]
+                faceCrop = imageGray[y:y+h, x:x+w]
 
             #resizen
             dim = (64, 64)
