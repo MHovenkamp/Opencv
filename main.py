@@ -32,7 +32,7 @@ for i in range(10):
             tStart = time.time()
             
             #grayscalling
-        print( path+file )
+            print( path+file )
             image = cv2.imread( path + file )
             imageRGB = cv2.cvtColor( image, cv2.COLOR_BGR2RGB)
             imageCopy = imageRGB.copy()
@@ -46,13 +46,14 @@ for i in range(10):
                 x, y, w, h = [v for v in f ]
                 cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
                 #croppen van gezicht
-                faceCrop = imageGray[y:y+h, x:x+w]
+            faceCrop = imageGray[y:y+h, x:x+w]
+
             #resizen
             dim = (64, 64)
             resized = cv2.resize(faceCrop, dim, interpolation = methods[i])
 
             #opslaan van de afbeeldingen
-            resizedName = pathResults + file + "Gray_resized.png"
+            #resizedName = pathResults + file + "Gray_resized.png"
             #cv2.imwrite(resizedName, resized) 
 
             tEnd = time.time()
