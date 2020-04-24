@@ -44,8 +44,8 @@ for i in range(10):
                 resized = cv2.resize(imageGray, dim, interpolation = methods[i])
 
                 #opslaan van de afbeeldingen
-                resizedName = pathResults + file + "Gray_resized.png"
-                cv2.imwrite(resizedName, resized)  
+                # resizedName = pathResults + file + "Gray_resized.png"
+                # cv2.imwrite(resizedName, resized)  
             else:
                 for (x, y, w, h) in face:
                     cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
@@ -56,8 +56,8 @@ for i in range(10):
                     resized = cv2.resize(faceCrop, dim, interpolation = methods[i])
 
                     #opslaan van de afbeeldingen
-                    resizedName = pathResults + file + "Gray_resized.png"
-                    cv2.imwrite(resizedName, resized) 
+                    # resizedName = pathResults + file + "Gray_resized.png"
+                    # cv2.imwrite(resizedName, resized) 
 
             tEnd = time.time()
             elapsedTime =  tEnd-tStart
