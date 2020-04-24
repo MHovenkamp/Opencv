@@ -46,13 +46,17 @@ for i in range(10):
                     #resizen
                     dim = (64, 64)
                     resized = cv2.resize(faceCrop, dim, interpolation = methods[i])
+
+                    #opslaan van de afbeeldingen
+                    resizedName = pathResults + file + "Gray_resized.png"
+                    cv2.imwrite(resizedName, resized) 
             else:
                 dim = (64, 64)
                 resized = cv2.resize(imageGray, dim, interpolation = methods[i])
 
-            #opslaan van de afbeeldingen
-            resizedName = pathResults + file + "Gray_resized.png"
-            cv2.imwrite(resizedName, resized) 
+                #opslaan van de afbeeldingen
+                resizedName = pathResults + file + "Gray_resized.png"
+                cv2.imwrite(resizedName, resized) 
 
             tEnd = time.time()
             elapsedTime =  tEnd-tStart
