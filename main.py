@@ -38,7 +38,16 @@ for i in range(10):
             imageGray = cv2.cvtColor( imageRGB, cv2.COLOR_RGB2GRAY )
             
             face = faceCascade.detectMultiScale( imageGray, 1.25, 6)
-            if (face is not None):
+            if (face is None):
+                print( "beep?")
+                dim = (64, 64)
+                resized = cv2.resize(imageGray, dim, interpolation = methods[i])
+
+                #opslaan van de afbeeldingen
+                resizedName = pathResults + file + "Gray_resized.png"
+                print(resizedName)
+                cv2.imwrite(resizedName, resized)  
+            else:
                 for (x, y, w, h) in face:
                     cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
                     #croppen van gezicht
@@ -51,14 +60,6 @@ for i in range(10):
                     resizedName = pathResults + file + "Gray_resized.png"
                     print(resizedName)
                     cv2.imwrite(resizedName, resized) 
-            else:
-                dim = (64, 64)
-                resized = cv2.resize(imageGray, dim, interpolation = methods[i])
-
-                #opslaan van de afbeeldingen
-                resizedName = pathResults + file + "Gray_resized.png"
-                print(resizedName)
-                cv2.imwrite(resizedName, resized) 
 
             tEnd = time.time()
             elapsedTime =  tEnd-tStart
@@ -69,6 +70,7 @@ for i in range(10):
 
         #berekenen en schrijven van average
         average = sum(resultsList) / len(resultsList)
+
         results.write("Average: " + str(average) + "\n" + "----------------------\n")
         total.write( names[i] + " " + str(average) + '\n' ) 
     total.write("----------------------\n")
