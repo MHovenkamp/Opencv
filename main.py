@@ -48,8 +48,8 @@ for i in range(10):
                     resized = cv2.resize(faceCrop, dim, interpolation = methods[i])
 
                     #opslaan van de afbeeldingen
-                    resizedName = pathResults + file + "Gray_resized.png"
-                    cv2.imwrite(resizedName, resized) 
+                resizedName = pathResults + file + "Gray_resized.png"
+                cv2.imwrite(resizedName, resized) 
             else:
                 dim = (64, 64)
                 resized = cv2.resize(imageGray, dim, interpolation = methods[i])
