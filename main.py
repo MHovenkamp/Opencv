@@ -20,7 +20,6 @@ resultFiles = ['/home/pi/Opencv/Results/resultsArea.txt',
                 '/home/pi/Opencv/Results/resultsLanczos4.txt',
                 '/home/pi/Opencv/Results/resultsLinear.txt',
                 '/home/pi/Opencv/Results/resultsNearest.txt']
-
 for i in range(len(methods)):
     total = open('/home/pi/Opencv/Results/total.txt', "a")
     results = open(resultFiles[i], "a")
@@ -32,7 +31,7 @@ for i in range(len(methods)):
         tStart = time.time()
         
         #grayscalling
-        print( path+file )
+	print( path+file )
         image = cv2.imread( path + file )
         imageRGB = cv2.cvtColor( image, cv2.COLOR_BGR2RGB)
         imageCopy = imageRGB.copy()
@@ -47,14 +46,13 @@ for i in range(len(methods)):
             cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
             #croppen van gezicht
             faceCrop = imageGray[y:y+h, x:x+w]
-
         #resizen
         dim = (64, 64)
         resized = cv2.resize(faceCrop, dim, interpolation = methods[i])
 
         #opslaan van de afbeeldingen
-        #resizedName = pathResults + file + "Gray_resized.png"
-        #cv2.imwrite(resizedName, resized) 
+        # resizedName = pathResults + file + "Gray_resized.png"
+        # cv2.imwrite(resizedName, resized) 
 
         tEnd = time.time()
 
