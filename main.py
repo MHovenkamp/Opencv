@@ -38,6 +38,7 @@ for i in range(10):
             imageGray = cv2.cvtColor( imageRGB, cv2.COLOR_RGB2GRAY )
             
             face = faceCascade.detectMultiScale( imageGray, 1.25, 6)
+            print(face)
             if (face is None):
                 print( "beep?")
                 dim = (64, 64)
