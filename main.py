@@ -39,7 +39,7 @@ for i in range(10):
             
             face = faceCascade.detectMultiScale( imageGray, 1.25, 6)
             print(face)
-            if (face is None):
+            if not face:
                 print( "beep?")
                 dim = (64, 64)
                 resized = cv2.resize(imageGray, dim, interpolation = methods[i])
