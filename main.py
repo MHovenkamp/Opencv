@@ -41,8 +41,8 @@ for i in range(10):
             if (face is not None):
                 for (x, y, w, h) in face:
                     cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
-                #croppen van gezicht
-                faceCrop = imageGray[y:y+h, x:x+w]
+                    #croppen van gezicht
+                    faceCrop = imageGray[y:y+h, x:x+w]
                 #resizen
                 dim = (64, 64)
                 resized = cv2.resize(faceCrop, dim, interpolation = methods[i])
