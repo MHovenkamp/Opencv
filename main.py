@@ -2,8 +2,10 @@ import cv2 #to read the image
 import time
 import os
 
+#importeren van het model: https://github.com/opencv/opencv/tree/master/data/haarcascades
 faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 resultsList = []
+#verschillende resize methodes en hun mappen
 names = ['Area', 'Cubic', 'Lanczos4', 'Linear', 'Nearest']
 paths = [   "/home/pi/Opencv/Results/Area/", 
             "/home/pi/Opencv/Results/Cubic/", 
@@ -27,8 +29,9 @@ for i in range(10):
         path = "/home/pi/Opencv/Images/200x200/"
         pathResults = paths[i]
 
+        #voor alle bestanden in een map
         for file in os.listdir(path):
-            image = cv2.imread(path + file)
+            #inlezen afbeelding
             tStart = time.time()
             
             print( path+file )
@@ -37,16 +40,20 @@ for i in range(10):
             imageCopy = imageRGB.copy()
             imageGray = cv2.cvtColor( imageRGB, cv2.COLOR_RGB2GRAY )
             
+            #detecteren van gezichten
             face = faceCascade.detectMultiScale( imageGray, 1.25, 6)
+            
             print(face)
             if not face:
+                #geen gezichten gevonden dus alleen resizen
                 dim = (64, 64)
                 resized = cv2.resize(imageGray, dim, interpolation = methods[i])
 
-                #opslaan van de afbeeldingen
+                #opslaan van de afbeeldingen, uncommenten voro gebruik:
                 # resizedName = pathResults + file + "Gray_resized.png"
                 # cv2.imwrite(resizedName, resized)  
             else:
+                #gezichten gevonden dus eerst croppen en dan resizen
                 for (x, y, w, h) in face:
                     cv2.rectangle(imageCopy, (x,y), (x+w, y+h), (255,0,0), 3)
                     #croppen van gezicht
@@ -55,20 +62,21 @@ for i in range(10):
                     dim = (64, 64)
                     resized = cv2.resize(faceCrop, dim, interpolation = methods[i])
 
-                    #opslaan van de afbeeldingen
+                    #opslaan van de afbeeldingen, uncommenten voro gebruik:
                     # resizedName = pathResults + file + "Gray_resized.png"
                     # cv2.imwrite(resizedName, resized) 
 
+            #tijd voor tijdtests
             tEnd = time.time()
             elapsedTime =  tEnd-tStart
             
+            #tijdresultaten wegschrijven naar bestanden
             resultsList.append(elapsedTime)
             print(elapsedTime)
             results.write( file + ': ' + str(elapsedTime) + '\n' )
 
         #berekenen en schrijven van average
         average = sum(resultsList) / len(resultsList)
-
         results.write("Average: " + str(average) + "\n" + "----------------------\n")
         total.write( names[i] + " " + str(average) + '\n' ) 
     total.write("----------------------\n")
