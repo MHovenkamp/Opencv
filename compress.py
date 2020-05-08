@@ -11,7 +11,7 @@ for file in os.listdir(imagePath):
     print( file )
     image = cv2.imread( imagePath + file )
     binaryImage = cv2.imencode('.png', image)[1].tostring()
-    with gzip.open( resultPath+"/GZIP"+file+".gz" , "wb" ) as result:
+    with gzip.open( resultPath+"/GZIP/"+file+".gz" , "wb" ) as result:
         result.write(binaryImage)
 
 for file in os.listdir(imagePath):
@@ -19,7 +19,7 @@ for file in os.listdir(imagePath):
     image = cv2.imread( imagePath + file )
     binaryImage = cv2.imencode('.png', image)[1].tostring()
     compressed = zlib.compress(binaryImage, 9)
-    outputfile = open(resultPath+"/GZIP"+file+".ZL", "w")
+    outputfile = open(resultPath+"/ZLIB/"+file+".txt", "w")
     outputfile.write(compressed)
 
 
