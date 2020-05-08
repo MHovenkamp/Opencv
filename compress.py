@@ -7,6 +7,7 @@ imagePath = "/home/pi/Opencv/CropResults/"
 resultPath = "/home/pi/Opencv/CompressResults/"
 
 for file in os.listdir(imagePath):
+    print( file )
     image = cv2.imread( imagePath + file )
     binaryImage = cv2.imencode( "png", image )
     with gzip.open( resultPath+file+".gz" , "wb" ) as result:
