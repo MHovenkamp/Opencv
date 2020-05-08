@@ -1,6 +1,5 @@
 import time
 import os
-import fstream
 import cv2
 import gzip
 import brotli
@@ -21,10 +20,8 @@ for file in os.listdir(imagePath):
     image = cv2.imread( imagePath + file )
     binaryImage = cv2.imencode('.png', image)[1].tostring()
     compressed = zlib.compress(binaryImage, 9)
-    ofstream outputFile
-    outputFile.open(resultPath+"/ZLIB"+file+".ZL")
-    outputFile << compressed
-    outputFile.close()
+    outputfile = open(resultPath+"/GZIP"+file+".ZL", "w")
+    outputfile.write(compressed)
 
 
 #unzip with:
