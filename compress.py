@@ -1,14 +1,16 @@
 import time
 import os
+import cv2
 import gzip
 
 imagePath = "/home/pi/Opencv/CropResults/"
 resultPath = "/home/pi/Opencv/CompressResults/"
 
 for file in os.listdir(imagePath):
-    data = file
-    with gzip.open( resultPath+file+".gz" , "rb" ) as result:
-        result.write(data)
+    image = cv2.imread( imagePath + file )
+    binaryImage = cv2.imencode( "png", image )
+    with gzip.open( resultPath+file+".gz" , "wb" ) as result:
+        result.write(binaryImage)
 
 
 # >>> import gzip
