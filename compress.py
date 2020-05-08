@@ -2,7 +2,6 @@ import time
 import os
 import cv2
 import gzip
-import brotli
 import zlib
 
 imagePath = "/home/pi/Opencv/CropResults/"
