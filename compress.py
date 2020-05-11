@@ -35,10 +35,10 @@ for file in os.listdir(imagePath):
 endCV = time.time()
 
 results = open("/home/pi/Opencv/CompressResults/times.txt", "a")
-result.write( "GZIP average: " + str((endGzip-startGzip)/amountOfPictures))
-result.write( "ZLIB average: " + str((endZlib-startZlib)/amountOfPictures))
-result.write( "GZIP average: " + str((endCV-startCV)/amountOfPictures))
-result.close()
+results.write( "GZIP average: " + str((endGzip-startGzip)/amountOfPictures))
+results.write( "\n ZLIB average: " + str((endZlib-startZlib)/amountOfPictures))
+results.write( "\n GZIP average: " + str((endCV-startCV)/amountOfPictures))
+results.close()
 #unzip with:
 #nparr = np.fromstring(STRING_FROM_DATABASE, np.uint8)
 #img = cv2.imdecode(nparr, cv2.CV_LOAD_IMAGE_COLOR)

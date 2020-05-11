@@ -1,1 +1,3 @@
-Timesx
+GZIP average: 0.00354575117429
+ ZLIB average: 0.0032073325581
+ GZIP average: 0.0044418738948
