@@ -6,6 +6,7 @@ import zlib
 
 imagePath = "/home/pi/Opencv/CropResults/"
 resultPath = "/home/pi/Opencv/CompressResults/"
+amountOfPictures = 72
 
 startGzip = time.time()
 for file in os.listdir(imagePath):
@@ -33,9 +34,9 @@ for file in os.listdir(imagePath):
     compressed = cv2.imwrite(resultPath+"/CV/"+file+'.png', image,  [cv2.IMWRITE_PNG_COMPRESSION, 9])
 endCV = time.time()
 
-results = open(/home/pi/Opencv/CompressResults/+"times.txt", "a")
+results = open("/CompressResults/times.txt", "a")
 result.write( "GZIP average: " + str((endGzip-startGzip)/amountOfPictures))
-result.write( "ZLIB average: " + str((endZlib startZlib)/amountOfPictures))
+result.write( "ZLIB average: " + str((endZlib-startZlib)/amountOfPictures))
 result.write( "GZIP average: " + str((endCV-startCV)/amountOfPictures))
 result.close()
 #unzip with:
