@@ -25,7 +25,7 @@ for file in os.listdir(imagePath):
 for file in os.listdir(imagePath):
     print( file )
     image = cv2.imread( imagePath + file )
-    compressed = cv2.imwrite(resultPath+"/CV/"+file+'.png', img,  [cv2.IMWRITE_PNG_COMPRESSION, 9])
+    compressed = cv2.imwrite(resultPath+"/CV"+file+'.png', img,  [cv2.IMWRITE_PNG_COMPRESSION, 9])
 #unzip with:
 #nparr = np.fromstring(STRING_FROM_DATABASE, np.uint8)
 #img = cv2.imdecode(nparr, cv2.CV_LOAD_IMAGE_COLOR)
