@@ -4,10 +4,14 @@ import cv2
 import gzip
 import zlib
 
+# Testen met compressie op snelheid, de reultaten worden ook opgeslagen om het 
+# verschil in Bytes te vinden voor en na compressie.
+
 imagePath = "/home/pi/Opencv/CropResults/"
 resultPath = "/home/pi/Opencv/CompressResults/"
 amountOfPictures = 72
 
+# Testen met GZIP
 startGzip = time.time()
 for file in os.listdir(imagePath):
     print( file )
@@ -17,6 +21,7 @@ for file in os.listdir(imagePath):
         result.write(binaryImage)
 endGzip = time.time()
 
+# Testen met ZLIB voor het DEFLATE algrotime
 startZlib = time.time()
 for file in os.listdir(imagePath):
     print( file )
@@ -27,6 +32,7 @@ for file in os.listdir(imagePath):
     outputfile.write(compressed)
 endZlib = time.time()
 
+# Testen met IMWRITE_PNG_COMPRESSION
 startCV = time.time()
 for file in os.listdir(imagePath):
     print( file )
@@ -34,6 +40,7 @@ for file in os.listdir(imagePath):
     compressed = cv2.imwrite(resultPath+"/CV/"+file+'.png', image,  [cv2.IMWRITE_PNG_COMPRESSION, 9])
 endCV = time.time()
 
+#opslaan van resultaten in een txt file
 results = open("/home/pi/Opencv/CompressResults/times.txt", "a")
 results.write( "GZIP average: " + str((endGzip-startGzip)/amountOfPictures))
 results.write( "\n ZLIB average: " + str((endZlib-startZlib)/amountOfPictures))
